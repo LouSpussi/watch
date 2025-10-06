@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Embed</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <script>
+    (() => {
+      const url = new URL(window.location);
+      const vid = url.searchParams.get('v') ?? 'ko70cExuzZM';
+      url.searchParams.delete('v');
+      const embedUrl = new URL(`https://www.youtube.com/embed/${vid}?${url.searchParams.toString()}&controls=0&autoplay=1&iv_load_policy=3&rel=0`);
+      document.querySelector('iframe').src = embedUrl.href;
+    })();
+  </script>
+</body>
+</html>
